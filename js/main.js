@@ -7,6 +7,8 @@ const astroDiv = document.querySelector('#astros');
 const astroUL = document.querySelector('#astroUL');
 const divError = document.querySelector('#error');
 
+
+
 axios.get(`http://api.open-notify.org/astros.json`)
   .then( res => {
 
@@ -27,14 +29,14 @@ axios.get(`http://api.open-notify.org/astros.json`)
   }); //axios
 
 
-const URL = 'http://api.open-notify.org/iss-now.json';
 
-setInterval( () =>
-  axios.get(URL)
+const getISSposition = () => {
+  axios.get('http://api.open-notify.org/iss-now.json')
     .then( res => {
       
       latDiv.innerHTML = "";
       longDiv.innerHTML = "";
+      divError.innerHTML = "";
       
       console.log(parseFloat(res.data.iss_position.latitude));
       console.log(parseFloat(res.data.iss_position.longitude));
@@ -51,8 +53,13 @@ setInterval( () =>
 
       divError.innerHTML = "There was an error locating the ISS!"
 
-    }) // axios
-    , 5000); //setInterval
+    });
+}; // getISSposition()
+
+
+getISSposition();
+
+setInterval( getISSposition, 5000); //setInterval
 
 
 
