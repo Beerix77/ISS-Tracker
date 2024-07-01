@@ -37,3 +37,7 @@ body{
 }
 
 
+#error{
+  color: red;
+  font-size: medium;
+}
