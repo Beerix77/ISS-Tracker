@@ -1,0 +1,39 @@
+body{
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: wheat;
+}
+
+
+.location{
+  text-align: left;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  border: rgb(206, 206, 206) 4px solid;
+  box-shadow: 10px 10px 15px hsla(0, 30%, 61%, 0.4);
+  border-radius: 15px;
+  margin: 35px 200px 35px 200px;
+}
+
+
+#astros{
+  border: rgb(206, 206, 206) 4px solid;
+  box-shadow: 10px 10px 15px hsla(0, 30%, 61%, 0.4);
+  border-radius: 15px;
+  margin: 35px 200px;
+  font-size: x-small;
+}
+
+
+#astroUL{
+  border: rgb(206, 206, 206) 4px solid;
+  box-shadow: 10px 10px 15px hsla(0, 30%, 61%, 0.4);
+  border-radius: 15px;
+  margin: 35px 200px;
+  font-size: x-small;
+  text-align: left;
+  padding-top: 10px;
+}
+
+

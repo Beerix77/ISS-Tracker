@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="#">             <!-- no favicon error -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJAX ISIS Tracker</title>
+  <link rel="shortcut icon" href="#">   <!-- no favicon error -->
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- First the library file -->
-    <script src="js/axios.min.js"></script>
+  <title>ISS Tracker</title>
+  
+  <script src="js/axios.min.js"></script>
+  <script src="js/main.js" defer></script>
 
-    <!-- then 2nd your own code .js -->
-    <script src="js/main.js" defer></script>
 </head>
 
-<body>
+<h1>ISS Tracker</h1>
+<hr>
+  
+<div>
+  <div id="lat" class="location"></div>
+  <div id="long" class="location"></div>
+</div>
 
-        <h1>Welcome to Space</h1>
-        
-        <div id="location"></div>
+<div id="astros">
+</div>
 
-        <div id="astronauts"></div>
+<div>
+  <ul id="astroUL">
+  </ul>
+</div>
+
+
 </body>
 </html>
+

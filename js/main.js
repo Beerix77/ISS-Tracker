@@ -1,40 +1,62 @@
 
-console.log('Hello space!');
-//console.log(axios);  // failsafe way to check loaded in correct order
+// console.log(axios); // checks axio connected
+ 
+const longDiv = document.querySelector('#long');
+const latDiv = document.querySelector('#lat');
+const astroDiv = document.querySelector('#astros');
+const astroUL = document.querySelector('#astroUL');
 
-const outputDivLoc = document.querySelector('#location');
-const outputDivAstro = document.querySelector('#astronauts');
+axios.get(`http://api.open-notify.org/astros.json`)
+.then( res => {
 
-setInterval(() => {
+  //console.log(`Number of astronauts in space: ${res.data.number}`);
+  astroDiv.innerHTML += `
+    <h4>Number of astronauts in space: ${res.data.number}</h4><hr>`;
 
-axios.get('http://api.open-notify.org/iss-now.json')
-    .then(function(res){
-        console.log('Location', res.data);
+  for (const spaceman of res.data.people){
 
-        //console.log('Location', res.data.iss_position.longitude);
-        //console.log('Location', res.data.iss_position.latitude);
-        
-        outputDivLoc.innerHTML =
-        `<h2>${res.data.iss_position.longitude + ", " +
-            res.data.iss_position.latitude}</h2>`;
+    astroUL.innerHTML += `<li>Name: ${spaceman.name}<br>Craft: ${spaceman.craft}</li><hr>`
+
+  }
+})
+.catch( err => {
+
+  console.log('There was an error', err);
+  astroDiv.innerHTML = 'There was an error!';
+
+}); //axios
+
+
+const URL = 'http://api.open-notify.org/iss-now.json';
+
+setInterval( () =>
+  axios.get(URL)
+    .then( res => {
+      
+      latDiv.innerHTML = "";
+      longDiv.innerHTML = "";
+      
+      // console.log(res.data.iss_position.latitude);
+      // console.log(res.data.iss_position.longitude);
+
+      latDiv.innerHTML += `
+        <h3>LATITUDE:</h3>${res.data.iss_position.latitude}`
+      longDiv.innerHTML += `
+        <h3>LONGITUDE:</h3>${res.data.iss_position.longitude}`
+
     })
-    .catch(function(err) {
-        console.warn('something went wrong', err);
-    });
+    .catch( err => {
 
-} 
-, 5000); //setinterval function every 5 secs. Create into function as a callback and also call it so it immed runs.
+      console.log('There was an error locating the ISS!', err)
 
-axios.get('http://api.open-notify.org/astros.json')
-    .then(function(res){
-        for (const astro of res.data.people) {
-            outputDivAstro.innerHTML +=
-            `<p>${astro.name}</p>`
-        }
-    })
-    .catch(function(err) {
-        console.warn('something went wrong', err);
-    });
-    
-  
+      div.innerHTML = "There was an error locating the ISS!"
+
+    }) // axios
+    , 5000); //setInterval
+
+
+
+
+
+
 
